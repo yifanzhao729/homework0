@@ -1,0 +1,39 @@
+---
+title: "HW0-yifanzhao"
+format: html
+editor: visual
+execute:
+
+  echo: false
+---
+
+##### In this report, we will solve the quadratic equation {f(x) = ax\^2 + bx + c = 0} for the given coefficients (a = 1), (b = 3), and (c = 2). The solutions can be found using the quadratic formula:
+
+```{r}
+a <- 1 
+b <- 3
+c <- 2
+f <- function(x,a,b,c){return(a*x^2 + b*x + c)}
+x <- seq(-5, 5, length = 300)
+plot(x, a*x^2 + b*x + c, type = "l")
+abline(h = 0, lty = 2)
+```
+
+```{r}
+discriminant <- b^2 - 4*a*c
+
+if (discriminant < 0) {
+  solution_text <- "The quadratic equation has no real solutions."
+} else if (discriminant == 0) {
+  solution <- -b / (2*a)
+  solution_text <- paste("The quadratic equation has one real solution:", solution)
+} else {
+  solution1 <- (-b + sqrt(discriminant)) / (2*a)
+  solution2 <- (-b - sqrt(discriminant)) / (2*a)
+  solution_text <- paste("The quadratic equation has two real solutions:", solution1, "and", solution2)
+}
+```
+
+```{r}
+cat(solution_text)
+```
